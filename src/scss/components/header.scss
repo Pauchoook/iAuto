@@ -1,0 +1,139 @@
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 30px 0px;
+  z-index: 100;
+  &.active {
+    position: fixed;
+    background: linear-gradient(196deg, #423c70 0%, #7e73d6 100%);
+    animation: effectTop 0.5s;
+  }
+  @include tablet {
+    padding: 15px 0px;
+  }
+  &__container {
+    @include flex-between;
+  }
+  &__logo {
+    display: block;
+    width: 195px;
+    @include laptop {
+      width: 145px;
+    }
+    @include tablet {
+      width: 95px;
+    }
+  }
+  &__logo-img {
+    width: 100%;
+    height: auto;
+  }
+  &__burger-open {
+    width: 40px;
+    display: none;
+    flex-direction: column;
+    row-gap: 6px;
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+    }
+    @include tablet {
+      display: flex;
+    }
+  }
+  &__nav {
+    @include tablet {
+      position: fixed;
+      padding: 20px;
+      background-color: white;
+      max-width: 350px;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      color: black;
+      box-shadow: 4px 0 4px 0 rgba(0, 0, 0, 0.25);
+      transform: translateX(-350px);
+      transition: transform .5s ease;
+      &.open {
+        transform: translateX(0);
+      }
+    }
+  }
+  &__nav-head {
+    @include flex-between;
+    display: none;
+    margin-bottom: 30px;
+    @include tablet {
+      display: flex;
+    }
+  }
+  &__nav-logo {
+    width: 90px;
+  }
+  &__burger-close {
+    @include flex-center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    span {
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background-color: currentColor;
+      &:first-child {
+        transform: rotate(45deg);
+      }
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    @include laptop {
+      gap: 20px;
+    }
+    @include tablet {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+  &__nav-btn {
+    position: relative;
+    font-size: 18px;
+    text-transform: uppercase;
+    @include hover {
+      &::before {
+        right: 0;
+      }
+    }
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      right: 100%;
+      height: 1px;
+      background-color: currentColor;
+      transition: right .2s ease;
+    }
+    @include laptop {
+      font-size: 16px;
+    }
+  }
+}
+
+@keyframes effectTop {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

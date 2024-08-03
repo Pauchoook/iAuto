@@ -1,0 +1,19 @@
+.title {
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+}
+.title-2 {
+  font-size: 56px;
+  line-height: 93%;
+  letter-spacing: 0.05em;
+  @include desktop {
+    font-size: 48px;
+  }
+  @include laptop {
+    font-size: 36px;
+  }
+  @include tablet {
+    font-size: 24px;
+  }
+}
