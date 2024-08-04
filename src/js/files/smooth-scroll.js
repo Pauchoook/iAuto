@@ -1,5 +1,3 @@
-import SmoothScroll from "smooth-scroll";
-
 export default function smoothScroll() {
   document.querySelectorAll(".anchor").forEach((link) => {
     link.addEventListener("click", function (e) {
