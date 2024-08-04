@@ -69,7 +69,7 @@
 		"pug-loader": "latest",
 		"sass": "latest",
 		"sass-loader": "latest",
-		"smooth-scroll": "latest",
+		"smooth-scroll": "^16.1.3",
 		"string-replace-loader": "latest",
 		"style-loader": "latest",
 		"swiper": "latest",

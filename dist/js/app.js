@@ -225,8 +225,51 @@
             if (window.scrollY < 1) header.classList.remove("active");
         }));
     }
+    function map() {
+        const contactsMap = document.querySelector("#contacts-map");
+        if (contactsMap) {
+            function init() {
+                const center = JSON.parse(contactsMap.dataset.center);
+                const zoom = Number(contactsMap.dataset.zoom);
+                const map = new ymaps.Map("contacts-map", {
+                    center,
+                    zoom
+                });
+                map.controls.remove("geolocationControl");
+                map.controls.remove("searchControl");
+                map.controls.remove("trafficControl");
+                map.controls.remove("typeSelector");
+                map.controls.remove("fullscreenControl");
+                map.controls.remove("zoomControl");
+                map.controls.remove("rulerControl");
+                map.behaviors.disable([ "scrollZoom" ]);
+            }
+            ymaps.ready(init);
+        }
+    }
+    function smoothScroll() {
+        document.querySelectorAll(".anchor").forEach((link => {
+            link.addEventListener("click", (function(e) {
+                e.preventDefault();
+                let href = this.getAttribute("href").substring(1);
+                const scrollTarget = document.getElementById(href);
+                if (scrollTarget) {
+                    const heightHeader = document.querySelector(".header").clientHeight;
+                    const offsetPosition = scrollTarget.getBoundingClientRect().top - heightHeader;
+                    window.scrollBy({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                    document.querySelector("#burger").classList.remove("open");
+                    document.body.classList.remove("body-hidden");
+                }
+            }));
+        }));
+    }
     isWebp();
     spoller();
     burger();
     headerScroll();
+    map();
+    smoothScroll();
 })();
